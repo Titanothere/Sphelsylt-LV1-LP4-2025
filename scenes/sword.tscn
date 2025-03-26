@@ -6,11 +6,11 @@
 a = Vector2(7, -6)
 b = Vector2(-5, 8)
 
-[node name="Sword" type="Sprite2D"]
-texture = ExtResource("1_ycbs3")
+[node name="Area2D" type="Area2D"]
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 0)
 shape = SubResource("SegmentShape2D_n355p")
+
+[node name="Sword" type="Sprite2D" parent="."]
+texture = ExtResource("1_ycbs3")
