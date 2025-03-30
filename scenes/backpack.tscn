@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyud0u3tafnqd"]
+
+[ext_resource type="Texture2D" uid="uid://cbe2o452vyfeq" path="res://assets/aspects+backpack.png" id="1_l1ewb"]
+[ext_resource type="Script" uid="uid://d3l8qly76jbnb" path="res://scenes/backpack.gd" id="2_5gcru"]
+[ext_resource type="Texture2D" uid="uid://do42iwrs5m8r4" path="res://assets/cogwheel.png" id="3_460lo"]
+
+[node name="Sprite2D" type="Sprite2D"]
+texture = ExtResource("1_l1ewb")
+script = ExtResource("2_5gcru")
+
+[node name="Aspect Slot 1" type="Sprite2D" parent="."]
+position = Vector2(-35, 42)
+texture = ExtResource("3_460lo")
+
+[node name="Aspect slot 2" type="Sprite2D" parent="."]
+position = Vector2(38, 42)
+rotation = 0.359538
+texture = ExtResource("3_460lo")
+
+[node name="Backpack slot 1" type="Sprite2D" parent="."]
+position = Vector2(-101, -50)
+texture = ExtResource("3_460lo")
