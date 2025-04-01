@@ -1,94 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://4srqu4jx36s7"]
+[gd_scene load_steps=4 format=3 uid="uid://4srqu4jx36s7"]
 
 [ext_resource type="PackedScene" uid="uid://dba4efp0fyxj1" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://dxtu2xrgn0r4x" path="res://scenes/sword.tscn" id="2_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://h0ha7l7x4n31" path="res://scenes/enemy.tscn" id="2_lnu2h"]
-[ext_resource type="Script" uid="uid://c4685l4wwgjda" path="res://scripts/sword.gd" id="3_iywne"]
-[ext_resource type="Script" uid="uid://bd45uvdlaradx" path="res://scripts/enemy.gd" id="3_lbhrr"]
-
-[sub_resource type="Animation" id="Animation_qlg0r"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(20, -9)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-1.5708]
-}
-
-[sub_resource type="Animation" id="Animation_dqkch"]
-resource_name = "rotating sword"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.53, 1, 1.48),
-"transitions": PackedFloat32Array(2.63901, 2.82843, 2.21914, 2.37841),
-"update": 0,
-"values": [Vector2(20, -9), Vector2(2, -28), Vector2(-21, -8), Vector2(1, 12)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.53, 1, 1.48),
-"transitions": PackedFloat32Array(4.43828, 1, 1, 0.535887),
-"update": 0,
-"values": [0.0, -1.5708, -3.14159, -4.71239]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_tuyoq"]
-_data = {
-&"RESET": SubResource("Animation_qlg0r"),
-&"rotating sword": SubResource("Animation_dqkch")
-}
 
 [node name="Game" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(6, -7)
 
-[node name="Sword" parent="Player" instance=ExtResource("2_lbhrr")]
-position = Vector2(20, -9)
-rotation = -1.5708
-script = ExtResource("3_iywne")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Sword"]
-libraries = {
-&"": SubResource("AnimationLibrary_tuyoq")
-}
-autoplay = "rotating sword"
+[node name="Gunblade" parent="Player" instance=ExtResource("2_lbhrr")]
+position = Vector2(0, -10)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
 
-[node name="Enemy1" parent="." instance=ExtResource("2_lnu2h")]
-position = Vector2(-11, 29)
-script = ExtResource("3_lbhrr")
-
-[connection signal="body_entered" from="Player/Sword" to="Enemy1" method="_on_sword_body_entered"]
+[node name="Enemy" parent="." instance=ExtResource("2_lnu2h")]
