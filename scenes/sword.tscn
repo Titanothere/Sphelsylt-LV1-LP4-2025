@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://c0kcub0u3k1k1" path="res://assets/character_weapon_anim_sheet.png" id="2_n355p"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_n355p"]
-a = Vector2(11, 0)
-b = Vector2(37, 0)
+a = Vector2(10, -1)
+b = Vector2(34, -1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n355p"]
 atlas = ExtResource("2_n355p")
@@ -96,10 +96,14 @@ position = Vector2(-2, 0)
 shape = SubResource("SegmentShape2D_n355p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GunbladeArea"]
-position = Vector2(16, 1)
+position = Vector2(14, 0)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_s4ec8")
 flip_h = true
+
+[node name="BarrelExit" type="Node2D" parent="GunbladeArea/AnimatedSprite2D"]
+position = Vector2(-14, -4)
+scale = Vector2(2, 2)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GunbladeArea"]
 root_node = NodePath("../Sword")

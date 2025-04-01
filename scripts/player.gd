@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const debug = false
+const DEBUG = false
 const SPEED = 100.0
 const SQRT2 = 1.414214
 var anim: AnimatedSprite2D
@@ -41,7 +41,7 @@ func _physics_process(delta: float) -> void:
 
 
 	# Handle animations
-	if debug:
+	if DEBUG:
 		print(velocity)
 	anim.play("side")
 	if (velocity.x <= -1 and facingright) or (velocity.x >= 1 and not facingright):

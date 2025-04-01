@@ -23,7 +23,10 @@ func _physics_process(_delta: float) -> void:
 	var rot : float = atan2((self.global_position.y-mp.y),(self.global_position.x-mp.x)) - PI
 	self.rotation = rot
 	#print(rot)
+	var prev = sprite.flip_v
 	if mp.x < self.position.x:
 		sprite.flip_v = true
 	else:
 		sprite.flip_v = false
+	if prev != sprite.flip_v:
+		$GunbladeArea/AnimatedSprite2D/BarrelExit.position.y *= -1

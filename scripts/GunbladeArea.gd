@@ -7,7 +7,8 @@ const SWING_SPEED = 1
 var swing_speed_mod = 1
 const SWING_DMG = 1
 var swing_dmg_mod = 1
-
+var rate_limit = 0
+var last_pos : Vector2
 @onready var player = $""
 
 const weapon_offset = 0
@@ -22,7 +23,7 @@ func _ready():
 	sprite = $AnimatedSprite2D
 	
 	
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	
 
 	#SWING
@@ -31,6 +32,20 @@ func _physics_process(_delta: float) -> void:
 		hitId += 1
 		anim.play("swing")
 		#print("swung")
+	event = Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)
+	if event and rate_limit <= 0 and not anim.is_playing():
+		var projectile = load("res://scenes/bullet.tscn")
+		var bullet = projectile.instantiate()
+		var game = get_tree().get_root().get_node("Game")
+		game.add_child(bullet)
+		bullet.global_position = $"AnimatedSprite2D/BarrelExit".global_position
+		var rot : float = get_parent().rotation - PI
+		bullet.init_vals(rot, self.global_position - last_pos)
+		last_pos = self.global_position
+		rate_limit = 1/bullet.bps
+	else:
+		rate_limit -= delta
+
 
 func _on_body_entered(body) -> void:
 	
