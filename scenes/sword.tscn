@@ -1,10 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxtu2xrgn0r4x"]
+[gd_scene load_steps=6 format=3 uid="uid://dxtu2xrgn0r4x"]
 
 [ext_resource type="Texture2D" uid="uid://csj523ic5tkuv" path="res://assets/sword.png" id="1_ycbs3"]
+[ext_resource type="Texture2D" uid="uid://c0kcub0u3k1k1" path="res://assets/character_weapon_anim_sheet.png" id="2_n355p"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_n355p"]
-a = Vector2(7, -6)
+a = Vector2(10, -11)
 b = Vector2(-5, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n355p"]
+atlas = ExtResource("2_n355p")
+region = Rect2(7, 113, 72, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s4ec8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n355p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Area2D" type="Area2D"]
 
@@ -13,4 +29,14 @@ position = Vector2(-2, 0)
 shape = SubResource("SegmentShape2D_n355p")
 
 [node name="Sword" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("1_ycbs3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-4, 3)
+rotation = 2.27416
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_s4ec8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+root_node = NodePath("../../Sword")
