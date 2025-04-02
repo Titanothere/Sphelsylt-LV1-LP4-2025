@@ -13,6 +13,7 @@ func _init():
 func _ready():
 	anim = $AnimatedSprite2D
 	anim.play("default")
+	print(position)
 
 func _physics_process(delta: float) -> void:
 

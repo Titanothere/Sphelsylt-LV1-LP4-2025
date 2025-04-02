@@ -15,6 +15,7 @@ var spread_mod = 1
 var attack_speed_mod = 1
 
 
+
 @onready var player = $""
 
 const weapon_offset = 0
@@ -66,3 +67,19 @@ func _on_body_entered(body) -> void:
 	if body.has_method("take_damage"):
 		body.take_damage(SWING_DMG * swing_dmg_mod, hitId)
 		#print("DAMAAG")
+		
+func alter_blade(item):
+	match item:
+		"Knockback":
+			return
+		"Range":
+			return
+		"Spread":
+			return
+		"Crit Chance":
+			return
+		"Projectile Size":
+			return
+		
+		
+		

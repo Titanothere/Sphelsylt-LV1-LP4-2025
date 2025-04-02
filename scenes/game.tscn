@@ -20,7 +20,6 @@ position = Vector2(0, -10)
 zoom = Vector2(4, 4)
 
 [node name="Backpack" parent="Camera2D" instance=ExtResource("1_yqjtg")]
-position = Vector2(-1, -5)
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("6_gee14")

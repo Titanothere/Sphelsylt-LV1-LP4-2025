@@ -21,6 +21,7 @@ func exit(next_state):
 
 
 func _unhandled_key_input(event):
+	return
 	if event.pressed:
 		print("From " + name + "")
 
