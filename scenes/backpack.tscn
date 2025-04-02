@@ -1,0 +1,120 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyud0u3tafnqd"]
+
+[ext_resource type="Texture2D" uid="uid://cbe2o452vyfeq" path="res://assets/aspects+backpack.png" id="1_l1ewb"]
+[ext_resource type="Script" uid="uid://d3l8qly76jbnb" path="res://scripts/backpack.gd" id="2_5gcru"]
+[ext_resource type="Script" uid="uid://df2rfq4qdlr8l" path="res://scripts/backpack-slot.gd" id="4_8usr3"]
+
+[node name="Sprite2D" type="Sprite2D"]
+texture = ExtResource("1_l1ewb")
+script = ExtResource("2_5gcru")
+
+[node name="TrashText" type="RichTextLabel" parent="."]
+offset_left = -212.0
+offset_top = -91.0
+offset_right = -156.0
+offset_bottom = -66.0
+text = "Trash"
+
+[node name="NewStatText" type="RichTextLabel" parent="."]
+offset_left = -109.0
+offset_top = -150.0
+offset_right = -25.0
+offset_bottom = -125.0
+text = "New Stat"
+
+[node name="BackpackText" type="RichTextLabel" parent="."]
+offset_left = -38.0
+offset_top = -102.0
+offset_right = 45.0
+offset_bottom = -77.0
+text = "Inventory"
+
+[node name="BackpackText2" type="RichTextLabel" parent="."]
+offset_left = -28.0
+offset_top = -16.0
+offset_right = 55.0
+offset_bottom = 9.0
+text = "Aspect
+"
+
+[node name="Aspect0" type="PanelContainer" parent="."]
+offset_left = -68.0
+offset_top = 11.0
+offset_right = -4.0
+offset_bottom = 75.0
+script = ExtResource("4_8usr3")
+
+[node name="Aspect1" type="PanelContainer" parent="."]
+offset_left = 3.0
+offset_top = 9.0
+offset_right = 76.0
+offset_bottom = 78.0
+script = ExtResource("4_8usr3")
+
+[node name="Backpack0" type="PanelContainer" parent="."]
+offset_left = -133.0
+offset_top = -83.0
+offset_right = -69.0
+offset_bottom = -19.0
+script = ExtResource("4_8usr3")
+slot_type = 1
+
+[node name="Backpack1" type="PanelContainer" parent="."]
+offset_left = -66.0
+offset_top = -82.0
+offset_right = -2.0
+offset_bottom = -18.0
+script = ExtResource("4_8usr3")
+slot_type = 1
+
+[node name="Backpack2" type="PanelContainer" parent="."]
+offset_left = 2.0
+offset_top = -83.0
+offset_right = 66.0
+offset_bottom = -19.0
+script = ExtResource("4_8usr3")
+slot_type = 1
+
+[node name="Backpack3" type="PanelContainer" parent="."]
+offset_left = 68.0
+offset_top = -83.0
+offset_right = 132.0
+offset_bottom = -19.0
+script = ExtResource("4_8usr3")
+slot_type = 1
+
+[node name="NewStat" type="PanelContainer" parent="."]
+offset_left = -32.0
+offset_top = -162.0
+offset_right = 32.0
+offset_bottom = -98.0
+script = ExtResource("4_8usr3")
+slot_type = 2
+
+[node name="Trash0" type="PanelContainer" parent="."]
+offset_left = -221.0
+offset_top = -66.0
+offset_right = -157.0
+offset_bottom = -2.0
+script = ExtResource("4_8usr3")
+slot_type = 3
+
+[node name="Trash1" type="PanelContainer" parent="."]
+offset_left = -221.0
+offset_top = 3.0
+offset_right = -157.0
+offset_bottom = 67.0
+script = ExtResource("4_8usr3")
+slot_type = 3
+
+[node name="Button" type="Button" parent="."]
+offset_left = 156.0
+offset_top = -20.0
+offset_right = 222.0
+offset_bottom = 21.0
+text = "Done"
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
