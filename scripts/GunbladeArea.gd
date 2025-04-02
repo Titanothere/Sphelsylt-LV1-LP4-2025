@@ -87,6 +87,7 @@ func _on_body_entered(body) -> void:
 		
 		
 func updateWeapon(stat0, stat1) -> void:
+	ATTACK_SPEED = 1
 	swing_dmg_mod = 1
 	PROJECTILE_SPREAD = 1
 	PROJECTILE_RANGE = 1
@@ -103,9 +104,9 @@ func updateWeapon(stat0, stat1) -> void:
 			DraggableAspect.AspectType.PROJECTILE_SPREAD: PROJECTILE_SPREAD = stat.typeValue
 			DraggableAspect.AspectType.SWORD_SWING_ANGLE: SWORD_SWING_ANGLE = stat.typeValue
 			DraggableAspect.AspectType.SWORD_LIFE_STEAL: SWORD_LIFE_STEAL = stat.typeValue
-			DraggableAspect.AspectType.ATTACK_SPEED: ATTACK_SPEED = stat.typeValue
-			DraggableAspect.AspectType.SIZE: SIZE = stat.typeValue
-			DraggableAspect.AspectType.DAMAGE: DAMAGE = stat.typeValue
+			DraggableAspect.AspectType.ATTACK_SPEED: ATTACK_SPEED = stat.typeValue 
+			DraggableAspect.AspectType.SIZE: SIZE = stat.typeValue * 2 + 0.25
+			DraggableAspect.AspectType.DAMAGE: DAMAGE = stat.typeValue * 2 + 1
 			DraggableAspect.AspectType.KNOCKBACK: KNOCKBACK = stat.typeValue
 	print(stat0.typeValue, stat1.typeValue)
 	var blade_size = $AnimatedSprite2D

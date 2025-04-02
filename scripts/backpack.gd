@@ -21,6 +21,7 @@ func _input(event: InputEvent) -> void:
 		print(aspect0.showAspectType(aspect0.type) + " " + aspect1.showAspectType(aspect1.type))
 
 func init_backpack():
+	$Timer.one_shot = true
 	var aspect0 = aspectScene.instantiate()
 	aspect0.type = DraggableAspect.AspectType.values().pick_random()
 	aspect0.typeValue = randf()
