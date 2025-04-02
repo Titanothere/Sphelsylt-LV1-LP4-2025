@@ -7,15 +7,21 @@ signal dragged_away(aspect: DraggableAspect)
 @export var aspect_source: AspectDroppableSlot.AspectSlotType = AspectDroppableSlot.AspectSlotType.WEAPON
 @export var type: AspectType
 
-enum AspectType {KNOCKBACK, RANGE, SPREAD, CRIT_CHANCE, PROJECTILE_SIZE}
+enum AspectType {PROJECTILE_RANGE, PROJECTILE_SPEED, PROJECTILE_SPREAD, 
+				 SWORD_SWING_ANGLE, SWORD_LIFE_STEAL,
+				 ATTACK_SPEED, SIZE, DAMAGE, KNOCKBACK}
 
 func showAspectType(aspectType: AspectType) -> String:
 	match aspectType:
+		AspectType.PROJECTILE_RANGE: return "Proj Range"
+		AspectType.PROJECTILE_SPEED: return "Proj Speed"
+		AspectType.PROJECTILE_SPREAD: return "Proj Spread"
+		AspectType.SWORD_SWING_ANGLE: return "Swing Angle"
+		AspectType.SWORD_LIFE_STEAL: return "Sword Lifesteal"
+		AspectType.ATTACK_SPEED: return "Attack Speed"
+		AspectType.SIZE: return "Size"
+		AspectType.DAMAGE: return "Damage"
 		AspectType.KNOCKBACK: return "Knockback"
-		AspectType.RANGE: return "Range"
-		AspectType.SPREAD: return "Spread"
-		AspectType.CRIT_CHANCE: return "Crit Chance"
-		AspectType.PROJECTILE_SIZE: return "Projectile Size"
 		_: return ""
 
 func updateLabel() -> void:

@@ -34,4 +34,4 @@ position = Vector2(0, -10)
 zoom = Vector2(4, 4)
 
 [node name="Backpack" parent="Player/Camera2D" instance=ExtResource("1_yqjtg")]
-position = Vector2(-1, 50)
+position = Vector2(-1, 46)
