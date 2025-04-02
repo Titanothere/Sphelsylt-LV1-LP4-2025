@@ -93,7 +93,7 @@ func updateWeapon(stat0, stat1) -> void:
 	PROJECTILE_RANGE = 1
 	PROJECTILE_SPEED = 1
 	SWORD_SWING_ANGLE = 1
-	SWORD_LIFE_STEAL = 1
+	SWORD_LIFE_STEAL = 0
 	SIZE = 1
 	DAMAGE = 1
 	KNOCKBACK = 1
@@ -103,7 +103,7 @@ func updateWeapon(stat0, stat1) -> void:
 			DraggableAspect.AspectType.PROJECTILE_SPEED: PROJECTILE_SPEED += stat.typeValue
 			DraggableAspect.AspectType.PROJECTILE_SPREAD: PROJECTILE_SPREAD += stat.typeValue
 			DraggableAspect.AspectType.SWORD_SWING_ANGLE: SWORD_SWING_ANGLE += stat.typeValue
-			DraggableAspect.AspectType.SWORD_LIFE_STEAL: SWORD_LIFE_STEAL += stat.typeValue
+			DraggableAspect.AspectType.SWORD_LIFE_STEAL: SWORD_LIFE_STEAL += stat.typeValue - 0.25
 			DraggableAspect.AspectType.ATTACK_SPEED: ATTACK_SPEED += stat.typeValue 
 			DraggableAspect.AspectType.SIZE: SIZE += stat.typeValue * 2 + 0.25
 			DraggableAspect.AspectType.DAMAGE: DAMAGE += stat.typeValue * 2 + 1

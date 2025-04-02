@@ -7,9 +7,17 @@ var anim: AnimatedSprite2D
 const I_AM_PLAYER = true
 var playing = false
 
+signal updateHelath(hp)
+
+var health = 9
+
 var facingright: bool
 func _init():
 	facingright = true
+
+func modifyHealth(change: float) -> void:
+	health += change
+	updateHelath.emit(health)
 
 func _ready():
 	anim = $AnimatedSprite2D

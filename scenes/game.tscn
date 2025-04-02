@@ -50,3 +50,5 @@ script = ExtResource("10_vtaks")
 [node name="Backpack" parent="Player/Camera2D" instance=ExtResource("1_yqjtg")]
 visible = false
 position = Vector2(-1, 46)
+
+[connection signal="updateHelath" from="Player" to="." method="_on_player_update_helath"]

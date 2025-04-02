@@ -3,10 +3,12 @@ extends Control
 var healthpip : PackedScene
 var pipContainer : HBoxContainer
 var pips : Array[TextureRect]
+	
 
 func _ready() -> void:
 	healthpip = load("res://scenes/HUD/healthpip.tscn")
 	pipContainer = get_node("Healthbar/PipContainer")
+	$"../../".updateHelath.connect(_on_updated_health)
 	add(9)
 	pass
 
@@ -26,3 +28,6 @@ func remove(change: int):
 		pipContainer.remove_child(oldPip)
 		oldPip.free()
 		pass
+
+func _on_updated_health(hp):
+	pass
