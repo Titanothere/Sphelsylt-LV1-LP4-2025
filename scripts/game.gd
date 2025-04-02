@@ -10,6 +10,7 @@ var killed
 var time
 var spawn_cooldown
 var Backpack : Sprite2D
+var GunBlade : Node2D
 var wait_on_press
 var presses
 var phi
@@ -23,7 +24,8 @@ func _process(delta : float) -> void:
 		killed = 0
 		time = 0
 		spawn_cooldown-=0.1
-		Backpack.show_aspect()
+		Backpack.show_backpack()
+		Backpack.make_aspect()
 		
 			
 	time += delta
@@ -33,6 +35,7 @@ func _process(delta : float) -> void:
 			spawn_enemy()
 func _ready() -> void:
 	Backpack = $Player/Camera2D/Backpack
+	GunBlade = $Player/Gunblade
 	Backpack.make_asp.connect(made_aspect.bind())
 	enemy = preload("res://scenes/enemy.tscn")
 	total = 2
@@ -44,6 +47,8 @@ func _ready() -> void:
 	presses = 0
 	player = $Player
 	spawn_enemy()
+	Backpack.init_backpack()
+	GunBlade.addBackpack(Backpack)
 
 func spawn_enemy() -> void:
 	print("enemy spawned")

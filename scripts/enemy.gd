@@ -22,7 +22,7 @@ func _physics_process(delta: float) -> void:
 #	print("collided with", body)
 #	if body.scene_file_path.contains("enemy"):
 #		body.queue_free()
-func take_damage_projectile(dmg) -> void:
+func take_damage_projectile(dmg,knockBack) -> void:
 	self.health -= dmg
 	print("hit!")
 	$AnimatedSprite2D.stop()
@@ -39,7 +39,7 @@ func take_damage_projectile(dmg) -> void:
 		death.emit()
 		queue_free()
 
-func take_damage(dmg, hitId) -> void:
+func take_damage(dmg, hitId,knockBack) -> void:
 	#only damage once each swing
 	
 	if hitId == lastHit:

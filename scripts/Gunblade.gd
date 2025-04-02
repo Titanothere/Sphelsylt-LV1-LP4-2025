@@ -5,6 +5,15 @@ var swing_speed_mod = 1
 const weapon_offset = 0
 var anim : AnimationPlayer
 var sprite : AnimatedSprite2D
+var Backpack : Sprite2D 
+
+
+
+
+func addBackpack(backpack):
+	Backpack = backpack
+	Backpack._on_aspect_update.connect($GunbladeArea.updateWeapon)
+
 func _ready():
 	set_process_input(true)
 	set_physics_process(true)
