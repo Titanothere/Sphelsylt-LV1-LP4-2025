@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://d3l8w4caqrg1j" path="res://scripts/idle.gd" id="3_lnu2h"]
 [ext_resource type="Script" uid="uid://crmfdbi3cosp6" path="res://scripts/combat.gd" id="4_iywne"]
 [ext_resource type="Script" uid="uid://dbq23g6ly0ygb" path="res://scripts/state_machine.gd" id="6_gee14"]
-[ext_resource type="PackedScene" path="res://scenes/map.tscn" id="8_gee14"]
+[ext_resource type="PackedScene" uid="uid://box00i0jwg0tt" path="res://scenes/map.tscn" id="8_gee14"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_lbhrr")

@@ -13,8 +13,8 @@ var Backpack : Sprite2D
 var wait_on_press
 var presses
 var phi
-var max_bound = 1500
-var min_bound = 1000
+var max_bound = 400
+var min_bound = 300
 func _process(delta : float) -> void:
 	if killed == total:
 		print("Round won!")
@@ -52,9 +52,9 @@ func spawn_enemy() -> void:
 	var length = min_bound + (max_bound-min_bound) * randf()
 	var x = cos(phi) * length
 	var y = sin(phi) * length
-	print(x)
-	print(y)
-	instance.set_position(Vector2(x + player.get_position,y + player.get_position))
+	print("enemy pos: "+ str(x) + ", "+ str(y))
+	print("player pos: " + str(player.get_position()))
+	instance.set_position(Vector2(x, y))
 	instance.death.connect(on_death.bind())
 	add_child(instance)
 	print(instance.get_position)
