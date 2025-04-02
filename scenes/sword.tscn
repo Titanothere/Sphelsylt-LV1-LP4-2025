@@ -1,6 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://tinwk2pkm7ko"]
+[gd_scene load_steps=13 format=3 uid="uid://dxtu2xrgn0r4x"]
 
-[ext_resource type="Script" path="res://scripts/Gunblade.gd" id="1_s4ec8"]
+[ext_resource type="Script" uid="uid://6u28aol2v7f4" path="res://scripts/Gunblade.gd" id="1_s4ec8"]
 [ext_resource type="Texture2D" uid="uid://csj523ic5tkuv" path="res://assets/sword.png" id="1_ycbs3"]
 [ext_resource type="Script" uid="uid://ddwdkise6yv73" path="res://scripts/GunbladeArea.gd" id="2_k5whp"]
 [ext_resource type="Texture2D" uid="uid://c0kcub0u3k1k1" path="res://assets/character_weapon_anim_sheet.png" id="2_n355p"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cbe2o452vyfeq" path="res://assets/aspects+backpack.png" id="1_l1ewb"]
 [ext_resource type="Script" uid="uid://d3l8qly76jbnb" path="res://scripts/backpack.gd" id="2_5gcru"]
-[ext_resource type="Script" path="res://scripts/backpack-slot.gd" id="4_8usr3"]
+[ext_resource type="Script" uid="uid://df2rfq4qdlr8l" path="res://scripts/backpack-slot.gd" id="4_8usr3"]
 
 [node name="Sprite2D" type="Sprite2D"]
 texture = ExtResource("1_l1ewb")
