@@ -18,9 +18,9 @@ var PROJECTILE_RANGE = 1
 var PROJECTILE_SPEED = 1
 var SWORD_SWING_ANGLE = 1
 var SWORD_LIFE_STEAL = 1
-var SIZE = 1
+var SIZE = 3
 var DAMAGE = 1
-var KNOCKBACK = 2
+var KNOCKBACK = 1
 
 
 @onready var player = $""
@@ -61,6 +61,8 @@ func _physics_process(delta: float) -> void:
 		swing_dmg_mod = DAMAGE
 		var rot : float = get_parent().rotation - PI
 		bullet.get_node("Area2D").knockBack = Vector2(KNOCKBACK,0).rotated(rot)
+		bullet.get_node("Area2D/Sprite2D").scale.x *= SIZE
+		bullet.get_node("Area2D/Sprite2D").scale.y *= SIZE
 		# Set Projectile parameters
 		bullet.init_vals(rot, self.global_position - last_pos, PROJECTILE_SPREAD)
 		last_pos = self.global_position
@@ -85,4 +87,28 @@ func _on_body_entered(body) -> void:
 		
 		
 func updateWeapon(stat0, stat1) -> void:
+	swing_dmg_mod = 1
+	PROJECTILE_SPREAD = 1
+	PROJECTILE_RANGE = 1
+	PROJECTILE_SPEED = 1
+	SWORD_SWING_ANGLE = 1
+	SWORD_LIFE_STEAL = 1
+	SIZE = 1
+	DAMAGE = 1
+	KNOCKBACK = 1
+	for stat in [stat0, stat1]:
+		match stat.type:
+			DraggableAspect.AspectType.PROJECTILE_RANGE: PROJECTILE_RANGE = stat.typeValue
+			DraggableAspect.AspectType.PROJECTILE_SPEED: PROJECTILE_SPEED = stat.typeValue
+			DraggableAspect.AspectType.PROJECTILE_SPREAD: PROJECTILE_SPREAD = stat.typeValue
+			DraggableAspect.AspectType.SWORD_SWING_ANGLE: SWORD_SWING_ANGLE = stat.typeValue
+			DraggableAspect.AspectType.SWORD_LIFE_STEAL: SWORD_LIFE_STEAL = stat.typeValue
+			DraggableAspect.AspectType.ATTACK_SPEED: ATTACK_SPEED = stat.typeValue
+			DraggableAspect.AspectType.SIZE: SIZE = stat.typeValue
+			DraggableAspect.AspectType.DAMAGE: DAMAGE = stat.typeValue
+			DraggableAspect.AspectType.KNOCKBACK: KNOCKBACK = stat.typeValue
 	print(stat0.typeValue, stat1.typeValue)
+	var blade_size = $AnimatedSprite2D
+	blade_size.scale.x *= SIZE
+	blade_size.scale.y *= SIZE
+	
