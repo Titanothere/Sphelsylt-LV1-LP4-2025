@@ -14,13 +14,13 @@ var ATTACK_SPEED = 1
 ### Needs to be integrated with actual DAMAGE stat
 var swing_dmg_mod = 1
 var PROJECTILE_SPREAD = 1
-var PROJECTILE_RANGE = 0
-var PROJECTILE_SPEED = 0
-var SWORD_SWING_ANGLE = 0
-var SWORD_LIFE_STEAL = 0
-var SIZE = 0
-var DAMAGE = 0
-var KNOCKBACK = 0
+var PROJECTILE_RANGE = 1
+var PROJECTILE_SPEED = 1
+var SWORD_SWING_ANGLE = 1
+var SWORD_LIFE_STEAL = 1
+var SIZE = 1
+var DAMAGE = 1
+var KNOCKBACK = 2
 
 
 @onready var player = $""
@@ -54,7 +54,11 @@ func _physics_process(delta: float) -> void:
 		var game = get_tree().get_root().get_node("Game")
 		game.add_child(bullet)
 		bullet.global_position = $"AnimatedSprite2D/BarrelExit".global_position
+		bullet.get_node("Area2D").proj_dmg_mod = DAMAGE
+		bullet.speed *= PROJECTILE_SPEED
+		swing_dmg_mod = DAMAGE
 		var rot : float = get_parent().rotation - PI
+		bullet.get_node("Area2D").knockBack = Vector2(KNOCKBACK,0).rotated(rot)
 		# Set Projectile parameters
 		bullet.init_vals(rot, self.global_position - last_pos, PROJECTILE_SPREAD)
 		last_pos = self.global_position
@@ -71,22 +75,12 @@ func _on_body_entered(body) -> void:
 	#print("feefee")
 	#print("Available methods:", body.get_method_list())
 	#print(body.has_method("take_damage"))
+	var rot : float = get_parent().rotation - PI
 	if body.has_method("take_damage"):
-		body.take_damage(SWING_DMG * swing_dmg_mod, hitId)
+		
+		body.take_damage(SWING_DMG * swing_dmg_mod, hitId,Vector2(KNOCKBACK,0).rotated(rot))
 		#print("DAMAAG")
 		
-func alter_blade(item):
-	match item:
-		"Knockback":
-			return
-		"Range":
-			return
-		"Spread":
-			return
-		"Crit Chance":
-			return
-		"Projectile Size":
-			return
 		
 func updateWeapon(stat0, stat1) -> void:
 	print(stat0.typeValue, stat1.typeValue)
