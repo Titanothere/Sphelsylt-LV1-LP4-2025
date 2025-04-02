@@ -99,15 +99,15 @@ func updateWeapon(stat0, stat1) -> void:
 	KNOCKBACK = 1
 	for stat in [stat0, stat1]:
 		match stat.type:
-			DraggableAspect.AspectType.PROJECTILE_RANGE: PROJECTILE_RANGE = stat.typeValue
-			DraggableAspect.AspectType.PROJECTILE_SPEED: PROJECTILE_SPEED = stat.typeValue
-			DraggableAspect.AspectType.PROJECTILE_SPREAD: PROJECTILE_SPREAD = stat.typeValue
-			DraggableAspect.AspectType.SWORD_SWING_ANGLE: SWORD_SWING_ANGLE = stat.typeValue
-			DraggableAspect.AspectType.SWORD_LIFE_STEAL: SWORD_LIFE_STEAL = stat.typeValue
-			DraggableAspect.AspectType.ATTACK_SPEED: ATTACK_SPEED = stat.typeValue 
-			DraggableAspect.AspectType.SIZE: SIZE = stat.typeValue * 2 + 0.25
-			DraggableAspect.AspectType.DAMAGE: DAMAGE = stat.typeValue * 2 + 1
-			DraggableAspect.AspectType.KNOCKBACK: KNOCKBACK = stat.typeValue
+			DraggableAspect.AspectType.PROJECTILE_RANGE: PROJECTILE_RANGE += stat.typeValue
+			DraggableAspect.AspectType.PROJECTILE_SPEED: PROJECTILE_SPEED += stat.typeValue
+			DraggableAspect.AspectType.PROJECTILE_SPREAD: PROJECTILE_SPREAD += stat.typeValue
+			DraggableAspect.AspectType.SWORD_SWING_ANGLE: SWORD_SWING_ANGLE += stat.typeValue
+			DraggableAspect.AspectType.SWORD_LIFE_STEAL: SWORD_LIFE_STEAL += stat.typeValue
+			DraggableAspect.AspectType.ATTACK_SPEED: ATTACK_SPEED += stat.typeValue 
+			DraggableAspect.AspectType.SIZE: SIZE += stat.typeValue * 2 + 0.25
+			DraggableAspect.AspectType.DAMAGE: DAMAGE += stat.typeValue * 2 + 1
+			DraggableAspect.AspectType.KNOCKBACK: KNOCKBACK += stat.typeValue
 	print(stat0.typeValue, stat1.typeValue)
 	var blade_size = $AnimatedSprite2D
 	blade_size.scale.x *= SIZE
