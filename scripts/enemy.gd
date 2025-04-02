@@ -3,7 +3,7 @@ var lastHit = -1
 const SPEED = 50
 @onready var player = $"../Player"
 @export var health = 2
-const RESPAWN = true
+const RESPAWN = false
 func _physics_process(delta: float) -> void:
 	var angle = player.get_angle_to(self.position)
 	

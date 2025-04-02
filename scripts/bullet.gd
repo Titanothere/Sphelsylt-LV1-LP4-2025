@@ -3,7 +3,7 @@ extends Node2D
 var direction : Vector2
 var spread : float = 0.5
 var bps : float = 5 # bullets per second
-var timeout : float = 2
+var timeout : float = 1
 var dev : float = 1
 var pp : Vector2 # this variable is really really stupid
 
