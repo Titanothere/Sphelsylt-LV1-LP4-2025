@@ -1,5 +1,7 @@
 extends CharacterBody2D
 var lastHit = -1
+const DRAGFACTOR = 0.5
+const ACCELERATION = 150
 const SPEED = 50
 var bad_fix : float = 0.5
 signal death
@@ -12,8 +14,11 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.play("move")
 	var angle = player.get_angle_to(self.position)
 	
-	velocity.x = -cos(angle) * SPEED
-	velocity.y = -sin(angle) * SPEED
+	var targetVelocity = Vector2(-cos(angle) * SPEED, -sin(angle) * SPEED)
+	
+	velocity += (targetVelocity - velocity).normalized() * ACCELERATION * delta
+	
+	velocity = velocity * (DRAGFACTOR ** delta)
 
 	move_and_slide()
 
