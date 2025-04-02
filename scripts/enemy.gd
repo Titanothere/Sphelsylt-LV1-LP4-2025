@@ -1,6 +1,7 @@
 extends CharacterBody2D
 var lastHit = -1
 const SPEED = 50
+signal death
 @onready var player = $"../Player"
 @export var health = 2
 const RESPAWN = false
@@ -34,4 +35,5 @@ func take_damage(dmg, hitId) -> void:
 	lastHit = hitId
 	self.health -= dmg
 	if health <= 0:
+		death.emit()
 		queue_free()
