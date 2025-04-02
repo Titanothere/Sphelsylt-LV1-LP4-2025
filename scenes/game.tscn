@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://by447g5uk0gpa" path="res://scripts/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://dba4efp0fyxj1" path="res://scenes/player.tscn" id="1_uwrxv"]
-[ext_resource type="PackedScene" uid="uid://cyud0u3tafnqd" path="res://scenes/backpack.tscn" id="1_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://dxtu2xrgn0r4x" path="res://scenes/sword.tscn" id="2_lbhrr"]
+[ext_resource type="PackedScene" path="res://scenes/backpack.tscn" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://tinwk2pkm7ko" path="res://scenes/sword.tscn" id="2_lbhrr"]
 [ext_resource type="Script" path="res://scripts/idle.gd" id="3_lnu2h"]
 [ext_resource type="Script" uid="uid://crmfdbi3cosp6" path="res://scripts/combat.gd" id="4_iywne"]
 [ext_resource type="Script" path="res://scripts/state_machine.gd" id="6_gee14"]
-[ext_resource type="PackedScene" uid="uid://box00i0jwg0tt" path="res://scenes/map.tscn" id="8_gee14"]
+[ext_resource type="PackedScene" path="res://scenes/map.tscn" id="8_gee14"]
 [ext_resource type="PackedScene" uid="uid://bihdsp4jcl7cs" path="res://scenes/HUD/HUD.tscn" id="9_0tnpc"]
 [ext_resource type="Script" uid="uid://ev6hu67p7yyq" path="res://scenes/HUD/HUD.gd" id="10_vtaks"]
 

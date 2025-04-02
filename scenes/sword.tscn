@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dxtu2xrgn0r4x"]
+[gd_scene load_steps=13 format=3 uid="uid://tinwk2pkm7ko"]
 
-[ext_resource type="Script" uid="uid://6u28aol2v7f4" path="res://scripts/Gunblade.gd" id="1_s4ec8"]
+[ext_resource type="Script" path="res://scripts/Gunblade.gd" id="1_s4ec8"]
 [ext_resource type="Texture2D" uid="uid://csj523ic5tkuv" path="res://assets/sword.png" id="1_ycbs3"]
 [ext_resource type="Script" uid="uid://ddwdkise6yv73" path="res://scripts/GunbladeArea.gd" id="2_k5whp"]
 [ext_resource type="Texture2D" uid="uid://c0kcub0u3k1k1" path="res://assets/character_weapon_anim_sheet.png" id="2_n355p"]
+[ext_resource type="AudioStream" uid="uid://b3e27i03emo24" path="res://assets/audio/swing.mp3" id="5_1yp6w"]
+[ext_resource type="AudioStream" uid="uid://b1xym8p4yx1kc" path="res://assets/audio/shoot.mp3" id="6_fnw8x"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_n355p"]
 a = Vector2(10, -1)
@@ -117,3 +119,9 @@ libraries = {
 visible = false
 position = Vector2(-1, 0)
 texture = ExtResource("1_ycbs3")
+
+[node name="Swing" type="AudioStreamPlayer" parent="GunbladeArea"]
+stream = ExtResource("5_1yp6w")
+
+[node name="Shoot" type="AudioStreamPlayer" parent="GunbladeArea"]
+stream = ExtResource("6_fnw8x")

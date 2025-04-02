@@ -26,6 +26,7 @@ func take_damage_projectile(dmg) -> void:
 			var eneme = enem.instantiate()
 			var game = get_tree().get_root().get_node("Game")
 			game.add_child(eneme)
+		death.emit()
 		queue_free()
 
 func take_damage(dmg, hitId) -> void:
