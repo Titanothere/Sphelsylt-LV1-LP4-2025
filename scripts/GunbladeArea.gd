@@ -38,9 +38,11 @@ func _physics_process(delta: float) -> void:
 	if event and not anim.is_playing():
 		hitId += 1
 		anim.play("swing")
+		$Swing.play()
 		#print("swung")
 	event = Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)
 	if event and rate_limit <= 0 and not anim.is_playing():
+		$Shoot.play()
 		#Spawn Projectile
 		var projectile = load("res://scenes/bullet.tscn")
 		var bullet = projectile.instantiate()

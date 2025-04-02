@@ -5,6 +5,7 @@ const SPEED = 100.0
 const SQRT2 = 1.414214
 var anim: AnimatedSprite2D
 const I_AM_PLAYER = true
+var playing = false
 
 var facingright: bool
 func _init():
@@ -16,7 +17,7 @@ func _ready():
 	print(position)
 
 func _physics_process(delta: float) -> void:
-
+	
 	# Used to fix "fast diagonals"
 	var realSpeed = SPEED
 	# Get the input direction and handle the movement/deceleration.
@@ -37,7 +38,11 @@ func _physics_process(delta: float) -> void:
 		velocity.y = vDirection * realSpeed
 	else:
 		velocity.y = move_toward(velocity.y, 0, realSpeed)
-
+	if velocity != Vector2(0,0):
+		if not playing and not $Grus.playing:
+			$Grus.play()
+	else:
+		$Grus.stop()
 	move_and_slide()
 
 
