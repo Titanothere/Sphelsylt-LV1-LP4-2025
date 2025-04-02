@@ -26,7 +26,10 @@ func _ready():
 	print(position)
 
 func _physics_process(delta: float) -> void:
-	
+	if (health <= 0):
+		$AnimatedSprite2D.visible = false
+		get_tree().paused = true
+
 	# Used to fix "fast diagonals"
 	var realSpeed = SPEED
 	# Get the input direction and handle the movement/deceleration.

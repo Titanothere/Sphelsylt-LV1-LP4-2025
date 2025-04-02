@@ -22,7 +22,8 @@ var SIZE = 3
 var DAMAGE = 1
 var KNOCKBACK = 1
 
-
+var default_scale_x
+var default_scale_y
 @onready var player = $""
 
 const weapon_offset = 0
@@ -35,6 +36,8 @@ func _ready():
 	anim = $AnimationPlayer
 	anim.speed_scale = SWING_SPEED * ATTACK_SPEED
 	sprite = $AnimatedSprite2D
+	default_scale_x = self.scale.x
+	default_scale_y = self.scale.y
 	
 	
 func _physics_process(delta: float) -> void:
@@ -105,11 +108,11 @@ func updateWeapon(stat0, stat1) -> void:
 			DraggableAspect.AspectType.SWORD_SWING_ANGLE: SWORD_SWING_ANGLE += stat.typeValue
 			DraggableAspect.AspectType.SWORD_LIFE_STEAL: SWORD_LIFE_STEAL += stat.typeValue - 0.25
 			DraggableAspect.AspectType.ATTACK_SPEED: ATTACK_SPEED += stat.typeValue 
-			DraggableAspect.AspectType.SIZE: SIZE += stat.typeValue * 2 + 0.25
-			DraggableAspect.AspectType.DAMAGE: DAMAGE += stat.typeValue * 2 + 1
-			DraggableAspect.AspectType.KNOCKBACK: KNOCKBACK += stat.typeValue
+			DraggableAspect.AspectType.SIZE: SIZE += (stat.typeValue - 0.5 + 0.05) * 2
+			DraggableAspect.AspectType.DAMAGE: DAMAGE += 2* stat.typeValue + 0.25
+			DraggableAspect.AspectType.KNOCKBACK: if stat.typeValue < 0.2: KNOCKBACK -= (0.2 - stat.typeValue) * 1200 
+			else: KNOCKBACK += stat.typeValue * 600 
 	print(stat0.typeValue, stat1.typeValue)
-	var blade_size = $AnimatedSprite2D
-	blade_size.scale.x *= SIZE
-	blade_size.scale.y *= SIZE
+	self.scale.x = SIZE * default_scale_x
+	self.scale.y = SIZE * default_scale_y
 	

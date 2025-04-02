@@ -4,6 +4,7 @@ var healthpip : PackedScene
 var pipContainer : HBoxContainer
 var pips : Array[TextureRect]
 	
+var health = 9
 
 func _ready() -> void:
 	healthpip = load("res://scenes/HUD/healthpip.tscn")
@@ -30,4 +31,10 @@ func remove(change: int):
 		pass
 
 func _on_updated_health(hp):
-	pass
+	var diff = health - hp
+	health = hp
+	diff = ceil(diff)
+	if diff > 0:
+		remove(diff)
+	elif diff < 0:
+		add(diff)

@@ -23,11 +23,11 @@ func _input(event: InputEvent) -> void:
 func init_backpack():
 	$Timer.one_shot = true
 	var aspect0 = aspectScene.instantiate()
-	aspect0.type = DraggableAspect.AspectType.values().pick_random()
+	aspect0.type = DraggableAspect.AspectType.SIZE
 	aspect0.typeValue = randf()
 	aspect0.updateLabel()
 	var aspect1 = aspectScene.instantiate()
-	aspect1.type = DraggableAspect.AspectType.values().pick_random()
+	aspect1.type = DraggableAspect.AspectType.KNOCKBACK
 	aspect1.typeValue = randf()
 	aspect1.updateLabel()
 	$Aspect0.add_aspect(aspect0)
