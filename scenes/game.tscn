@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://4srqu4jx36s7"]
+[gd_scene load_steps=12 format=3 uid="uid://4srqu4jx36s7"]
 
 [ext_resource type="Script" uid="uid://by447g5uk0gpa" path="res://scripts/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://dba4efp0fyxj1" path="res://scenes/player.tscn" id="1_uwrxv"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://box00i0jwg0tt" path="res://scenes/map.tscn" id="8_gee14"]
 [ext_resource type="PackedScene" uid="uid://bihdsp4jcl7cs" path="res://scenes/HUD/HUD.tscn" id="9_0tnpc"]
 [ext_resource type="Script" uid="uid://ev6hu67p7yyq" path="res://scenes/HUD/HUD.gd" id="10_vtaks"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vtaks"]
+radius = 9.05539
 
 [node name="Game" type="Node2D"]
 position = Vector2(0, -8)
@@ -29,6 +32,13 @@ light_mask = 2
 visibility_layer = 2
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
+
+[node name="Area2D" type="Area2D" parent="Player"]
+position = Vector2(-1, 0)
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+shape = SubResource("CircleShape2D_vtaks")
 
 [node name="Gunblade" parent="Player" instance=ExtResource("2_lbhrr")]
 position = Vector2(0, -10)

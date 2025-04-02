@@ -22,6 +22,7 @@ func modifyHealth(change: float) -> void:
 func _ready():
 	anim = $AnimatedSprite2D
 	anim.play("default")
+	health = 9
 	print(position)
 
 func _physics_process(delta: float) -> void:
@@ -66,3 +67,5 @@ func _physics_process(delta: float) -> void:
 			anim.play("up")
 		elif velocity.y > 0:
 			anim.play("down")
+			
+	

@@ -16,24 +16,36 @@ var presses
 var phi
 var max_bound = 400
 var min_bound = 300
+var last_hit
+var time_since
 func _process(delta : float) -> void:
+	if($Player/Area2D.has_overlapping_bodies()):
+		if time_since - last_hit > 0.5:
+			last_hit = time_since
+			$Player.modifyHealth(-1)
+			print("player health", $Player.health)
 	if killed == total:
 		print("Round won!")
 		total+=1
 		enemy_amount = total
 		killed = 0
 		time = 0
+		time_since = 0
+		last_hit = 0
 		spawn_cooldown-=0.1
 		Backpack.show_backpack()
 		Backpack.make_aspect()
 		
 			
 	time += delta
+	time_since += delta
 	if time >= spawn_cooldown:
 		time = 0
 		if(enemy_amount > 0):
 			spawn_enemy()
 func _ready() -> void:
+	time_since = 0
+	last_hit = 0
 	Backpack = $Player/Camera2D/Backpack
 	GunBlade = $Player/Gunblade
 	Backpack.make_asp.connect(made_aspect.bind())
