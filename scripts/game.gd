@@ -20,7 +20,8 @@ func _process(delta : float) -> void:
 		killed = 0
 		time = 0
 		spawn_cooldown-=0.1
-		Backpack.show_aspect()
+		Backpack.show_backpack()
+		Backpack.make_aspect()
 		
 			
 	time += delta
@@ -41,6 +42,7 @@ func _ready() -> void:
 	presses = 0
 	player = $Player
 	spawn_enemy()
+	Backpack.init_backpack()
 
 func spawn_enemy() -> void:
 	print("enemy spawned")
