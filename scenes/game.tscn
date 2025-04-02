@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://h0ha7l7x4n31" path="res://scenes/enemy.tscn" id="2_lnu2h"]
 [ext_resource type="Script" uid="uid://d3l8w4caqrg1j" path="res://scripts/idle.gd" id="3_lnu2h"]
 [ext_resource type="Script" uid="uid://crmfdbi3cosp6" path="res://scripts/combat.gd" id="4_iywne"]
-[ext_resource type="Script" uid="uid://dbq23g6ly0ygb" path="res://scripts/state_machine.gd" id="6_gee14"]
+[ext_resource type="Script" path="res://scripts/state_machine.gd" id="6_gee14"]
 
 [node name="Game" type="Node2D"]
 

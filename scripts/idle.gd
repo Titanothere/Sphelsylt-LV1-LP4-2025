@@ -6,7 +6,7 @@ func enter():
 	print("Hello from " + name + "!")
 	# Exit 2 seconds later
 	await get_tree().create_timer(2.0).timeout
-	exit("State2")
+	exit("Combat")
 
 
 func exit(next_state):
