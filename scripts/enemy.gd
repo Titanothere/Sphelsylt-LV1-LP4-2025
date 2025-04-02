@@ -13,11 +13,11 @@ func _physics_process(delta: float) -> void:
 	if bad_fix > 0.1:
 		$AnimatedSprite2D.play("move")
 	var angle = player.get_angle_to(self.position)
-	
+
 	var targetVelocity = Vector2(-cos(angle) * SPEED, -sin(angle) * SPEED)
-	
+
 	velocity += (targetVelocity - velocity).normalized() * ACCELERATION * delta
-	
+
 	velocity = velocity * (DRAGFACTOR ** delta)
 
 	move_and_slide()
@@ -35,6 +35,8 @@ func take_damage_projectile(dmg,knockBack) -> void:
 	bad_fix = 0
 	print($AnimatedSprite2D.animation)
 
+	velocity -= knockBack
+
 	if health <= 0:
 		if RESPAWN:
 			var enem = load("res://scenes/enemy.tscn")
@@ -46,7 +48,7 @@ func take_damage_projectile(dmg,knockBack) -> void:
 
 func take_damage(dmg, hitId,knockBack) -> void:
 	#only damage once each swing
-	
+
 	if hitId == lastHit:
 		return
 	lastHit = hitId
@@ -54,6 +56,9 @@ func take_damage(dmg, hitId,knockBack) -> void:
 	$AnimatedSprite2D.stop()
 	$AnimatedSprite2D.play("hurt")
 	bad_fix = 0
+
+	velocity -= knockBack
+
 	if health <= 0:
 		death.emit()
 		queue_free()
