@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://150hprhdjdvo"]
+
+[ext_resource type="Texture2D" uid="uid://pyi5mmqcpvpd" path="res://assets/heallthpip.png" id="1_qpyic"]
+
+[node name="healthpip" type="TextureRect"]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_qpyic")
