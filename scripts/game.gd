@@ -10,8 +10,12 @@ var killed
 var time
 var spawn_cooldown
 var Backpack : Sprite2D
+var GunBlade : Node2D
 var wait_on_press
 var presses
+var phi
+var max_bound = 400
+var min_bound = 300
 func _process(delta : float) -> void:
 	if killed == total:
 		print("Round won!")
@@ -20,7 +24,8 @@ func _process(delta : float) -> void:
 		killed = 0
 		time = 0
 		spawn_cooldown-=0.1
-		Backpack.show_aspect()
+		Backpack.show_backpack()
+		Backpack.make_aspect()
 		
 			
 	time += delta
@@ -29,7 +34,8 @@ func _process(delta : float) -> void:
 		if(enemy_amount > 0):
 			spawn_enemy()
 func _ready() -> void:
-	Backpack = $Camera2D/Backpack
+	Backpack = $Player/Camera2D/Backpack
+	GunBlade = $Player/Gunblade
 	Backpack.make_asp.connect(made_aspect.bind())
 	enemy = preload("res://scenes/enemy.tscn")
 	total = 2
@@ -41,11 +47,20 @@ func _ready() -> void:
 	presses = 0
 	player = $Player
 	spawn_enemy()
+	Backpack.init_backpack()
+	GunBlade.addBackpack(Backpack)
 
 func spawn_enemy() -> void:
 	print("enemy spawned")
 	var instance = enemy.instantiate()
-	instance.set_position(Vector2((randf()-0.5)*get_window().size.x,(randf()-0.5)*get_window().size.y))
+	var phi = PI*2 * randf()
+	var length = min_bound + (max_bound-min_bound) * randf()
+	var player_pos = player.get_position()
+	var x = cos(phi) * length + player_pos.x
+	var y = sin(phi) * length + player_pos.y
+	print("enemy pos: "+ str(x) + ", "+ str(y))
+	print("player pos: " + str(player.get_position()))
+	instance.set_position(Vector2(x, y))
 	instance.death.connect(on_death.bind())
 	add_child(instance)
 	print(instance.get_position)
