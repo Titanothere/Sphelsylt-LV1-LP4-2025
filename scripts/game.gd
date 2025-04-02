@@ -50,8 +50,9 @@ func spawn_enemy() -> void:
 	var instance = enemy.instantiate()
 	var phi = PI*2 * randf()
 	var length = min_bound + (max_bound-min_bound) * randf()
-	var x = cos(phi) * length
-	var y = sin(phi) * length
+	var player_pos = player.get_position()
+	var x = cos(phi) * length + player_pos.x
+	var y = sin(phi) * length + player_pos.y
 	print("enemy pos: "+ str(x) + ", "+ str(y))
 	print("player pos: " + str(player.get_position()))
 	instance.set_position(Vector2(x, y))
