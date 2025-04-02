@@ -6,10 +6,19 @@ signal dragged_away(aspect: DraggableAspect)
 
 @export var aspect_source: AspectDroppableSlot.AspectSlotType = AspectDroppableSlot.AspectSlotType.WEAPON
 @export var type: AspectType
+var typeValue: float
+
+func _ready() -> void:
+	typeValue = randf()
 
 enum AspectType {PROJECTILE_RANGE, PROJECTILE_SPEED, PROJECTILE_SPREAD, 
 				 SWORD_SWING_ANGLE, SWORD_LIFE_STEAL,
 				 ATTACK_SPEED, SIZE, DAMAGE, KNOCKBACK}
+
+func updateTypeValue(val):
+	typeValue = val
+	updateLabel()
+	
 
 func showAspectType(aspectType: AspectType) -> String:
 	match aspectType:
@@ -25,9 +34,10 @@ func showAspectType(aspectType: AspectType) -> String:
 		_: return ""
 
 func updateLabel() -> void:
-	var label = get_node("Label")
-	label.clear()
-	label.add_text(showAspectType(type))
+	$Label.clear()
+	$Label.add_text(showAspectType(type))
+	$TypeValueLabel.clear()
+	$TypeValueLabel.add_text(str(typeValue).pad_decimals(2))
 
 func getPreview() -> Control:
 	return texture_rect.duplicate()

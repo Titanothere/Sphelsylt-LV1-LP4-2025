@@ -25,6 +25,9 @@ func clear_stat() -> bool:
 	return true
 	
 func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
+	var backpack = $".."
+	if backpack.disableMove:
+		return false
 	if (data is DraggableAspect):
 		var aspect = data as DraggableAspect
 		if (aspect.aspect_source != AspectSlotType.NEW_STAT 

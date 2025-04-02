@@ -89,4 +89,4 @@ func alter_blade(item):
 			return
 		
 func updateWeapon(stat0, stat1) -> void:
-	pass
+	print(stat0.typeValue, stat1.typeValue)
