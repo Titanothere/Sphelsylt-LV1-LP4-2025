@@ -1,10 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://4srqu4jx36s7"]
 
+[gd_scene load_steps=5 format=3 uid="uid://4srqu4jx36s7"]
+
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://dba4efp0fyxj1" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://dxtu2xrgn0r4x" path="res://scenes/sword.tscn" id="2_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://h0ha7l7x4n31" path="res://scenes/enemy.tscn" id="2_lnu2h"]
 
+[ext_resource type="PackedScene" uid="uid://cyud0u3tafnqd" path="res://scenes/backpack.tscn" id="1_yqjtg"]
+
+[ext_resource type="Script" uid="uid://d3l8w4caqrg1j" path="res://scripts/idle.gd" id="3_lnu2h"]
+[ext_resource type="Script" uid="uid://crmfdbi3cosp6" path="res://scripts/combat.gd" id="4_iywne"]
+
 [node name="Game" type="Node2D"]
+script = ExtResource("1_lbhrr")
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
 
@@ -15,3 +24,12 @@ position = Vector2(0, -10)
 zoom = Vector2(4, 4)
 
 [node name="Enemy" parent="." instance=ExtResource("2_lnu2h")]
+
+[node name="Backpack" parent="Camera2D" instance=ExtResource("1_yqjtg")]
+position = Vector2(-1, -5)
+
+[node name="Idle" type="Node" parent="."]
+script = ExtResource("3_lnu2h")
+
+[node name="Combat" type="Node" parent="."]
+script = ExtResource("4_iywne")
