@@ -29,7 +29,7 @@ func _process(delta : float) -> void:
 		if(enemy_amount > 0):
 			spawn_enemy()
 func _ready() -> void:
-	Backpack = $Camera2D/Backpack
+	Backpack = $Player/Camera2D/Backpack
 	Backpack.make_asp.connect(made_aspect.bind())
 	enemy = preload("res://scenes/enemy.tscn")
 	total = 2
