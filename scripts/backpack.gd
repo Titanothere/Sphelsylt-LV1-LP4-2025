@@ -4,6 +4,8 @@ var shown : bool
 var currentContainer : int = 0
 var aspectScene = preload("res://scenes/aspect.tscn")
 signal make_asp
+signal _on_aspect_update(stat0, stat1)
+
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -26,6 +28,7 @@ func init_backpack():
 	$Aspect0.add_aspect(aspect0)
 	$Aspect1.add_aspect(aspect1)
 	## EMIT SIGNAL TO WEAPON!
+	_on_aspect_update.emit(aspect0, aspect1)
 
 func make_aspect():
 	$NewStat.clear_stat()
@@ -52,4 +55,5 @@ func _on_button_button_up() -> void:
 		print("BONGONGONG - need to have two stats in aspect")
 		return
 	## EMIT SIGNAL TO WEAPON!
+	_on_aspect_update.emit($Aspect0, $Aspect1)
 	hide_backpack()

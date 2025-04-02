@@ -3,17 +3,24 @@ extends Area2D
 # Define the base parameters of the weapon
 var hitId = 0
 
-
-# aspect modifiers
 const SWING_SPEED = 1
-var swing_speed_mod = 1
 const SWING_DMG = 1
-var swing_dmg_mod = 1
 var rate_limit = 0
 var last_pos : Vector2
-var spread_mod = 1
-var attack_speed_mod = 1
 
+## ASPECT AFFECTABLE STATS
+var ATTACK_SPEED = 1
+
+### Needs to be integrated with actual DAMAGE stat
+var swing_dmg_mod = 1
+var PROJECTILE_SPREAD = 1
+var PROJECTILE_RANGE = 0
+var PROJECTILE_SPEED = 0
+var SWORD_SWING_ANGLE = 0
+var SWORD_LIFE_STEAL = 0
+var SIZE = 0
+var DAMAGE = 0
+var KNOCKBACK = 0
 
 
 @onready var player = $""
@@ -26,7 +33,7 @@ func _ready():
 	connect("body_entered", _on_body_entered)
 	
 	anim = $AnimationPlayer
-	anim.speed_scale = SWING_SPEED * swing_speed_mod
+	anim.speed_scale = SWING_SPEED * ATTACK_SPEED
 	sprite = $AnimatedSprite2D
 	
 	
@@ -49,9 +56,9 @@ func _physics_process(delta: float) -> void:
 		bullet.global_position = $"AnimatedSprite2D/BarrelExit".global_position
 		var rot : float = get_parent().rotation - PI
 		# Set Projectile parameters
-		bullet.init_vals(rot, self.global_position - last_pos, spread_mod)
+		bullet.init_vals(rot, self.global_position - last_pos, PROJECTILE_SPREAD)
 		last_pos = self.global_position
-		rate_limit = 1/(bullet.bps * attack_speed_mod)
+		rate_limit = 1/(bullet.bps * ATTACK_SPEED)
 	else:
 		rate_limit -= delta
 
@@ -81,5 +88,5 @@ func alter_blade(item):
 		"Projectile Size":
 			return
 		
-		
-		
+func updateWeapon(stat0, stat1) -> void:
+	pass
